@@ -20,25 +20,25 @@
         </div>
         <section class="cartao">
             <h2 class="card__title">Completa tu registro</h2>
-            <form action="./registro_concluido.html" class="formulario flex flex--column" id="regis_form">
+            <form action="./registro_concluido.html" class="formulario flex flex--column" id="form_registro">
                 <fieldset>
                     <legend class="form__label">Información básica</legend>
                     <!-- nombre -->
                     <div class="input-container">
-                        <input name="name" id="name" class="input" type="text" placeholder="Nombre" data-tipo="nombre" required>
-                        <label class="input-label" for="name">Nombre</label>
+                        <input name="name" id="name" class="input" type="text" placeholder="Nombre" data-tipo="nombre" required onblur="validar(this)" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜ.\- ]+$">
+                        <label class="input-label" for="name">*Nombre</label>
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
                     <!-- email -->
                     <div class="input-container">
-                        <input name="email" id="email" class="input" type="email" placeholder="Email" data-tipo="mail" required>
-                        <label class="input-label" for="email">Email</label>
+                        <input name="email" id="email" class="input" type="email" placeholder="Email" data-tipo="mail" required onblur="validar(this)" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" >
+                        <label class="input-label" for="email">*Email</label>
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
                     <!-- password -->
                     <div class="input-container">
-                        <input name="password" id="password" class="input" type="password" placeholder="Contraseña" required minlength="6" maxlength="12" data-tipo="texto">
-                        <label class="input-label" for="password">Contraseña</label>
+                        <input name="password" id="password" class="input" type="password" placeholder="Contraseña" required minlength="6" maxlength="12" data-tipo="pass" required onblur="validar(this)" pattern="^(?=.{6,12}$)[a-zA-ZáéíóúÁÉÍÓÚüÜ0-9.#\/\-\s]+$">
+                        <label class="input-label" for="password">*Contraseña</label>
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
                 </fieldset>
@@ -46,13 +46,13 @@
                     <legend class="form__label">Información personal</legend>
                     <!-- fecha nacimiento-->
                     <div class="input-container">
-                        <input name="birth" id="birth" class="input" type="text" placeholder="Fecha de nacimento"data-tipo="fecha">
+                        <input name="birth" id="birth" class="input" type="date" placeholder="Fecha de nacimento" data-tipo="fecha" data-edadmin="18" onblur="validar(this)">
                         <label class="input-label" for="birth">Fecha de nacimiento</label>
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
                     <div class="input-container">
                         <!-- tel -->
-                        <input name="phoneNumber" id="phoneNumber" class="input" type="text" placeholder="Número telefónico" data-tipo="tel">
+                        <input name="phoneNumber" id="phoneNumber" class="input" type="text" maxlength="10" placeholder="Número telefónico" data-tipo="tel" onblur="validar(this)" pattern="^[0-9]{10}$">
                         <label class="input-label" for="phoneNumber">Número telefónico</label>
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
@@ -61,28 +61,32 @@
                     <legend class="form__label">Dirección</legend>
                     <!-- direccion-->
                     <div class="input-container">
-                        <input name="cep" id="cep" class="input" type="text" placeholder="CEP" data-tipo="texto">
+                        <input name="cep" id="cep" class="input" type="text" placeholder="CEP" data-tipo="texto" onblur="validar(this)" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜ0-9.#\/\-\s]+$">
                         <label class="input-label" for="cep">Dirección completa</label>
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
                     <!-- ciudad -->
                     <div class="input-container">
-                        <input name="city" id="city" class="input" type="text" placeholder="Ciudad" data-tipo="nombre">
+                        <input name="city" id="city" class="input" type="text" placeholder="Ciudad" data-tipo="nombre" onblur="validar(this)" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜ.\- ]+$">
                         <label class="input-label" for="city">Ciudad</label>
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
                     <!-- estado -->
                     <div class="input-container">
-                        <input name="state" id="state" class="input" type="text" placeholder="Estado" data-tipo="nombre">
+                        <input name="state" id="state" class="input" type="text" placeholder="Estado" data-tipo="nombre" onblur="validar(this)" pattern="^[a-zA-ZáéíóúÁÉÍÓÚüÜ.\- ]+$">
                         <label class="input-label" for="state">Estado</label>
                         <span class="input-message-error">Este campo no es valido</span>
                     </div>
+                </fieldset>
+                <fieldset>
+                    <p>Los campos marcados con (*) son obligatorios</p>
                 </fieldset>
                 <button class="button" id="sbmt" >Registrar</a>
             </form>
         </section>
     </main>
 
-    <script src="assets/js/regis_form.js" type="module"></script>
+    <script src="assets/js/form_registro.js" type="module"></script>
+    <script src="assets/js/validar_campo.js"></script>
 </body>
 </html>
